@@ -10,6 +10,12 @@ Tassativo è solo l'entry point tra Box e theme. Deve essere theme.GET_CONVERTER
 
 We ship a workflow for styling your React product.
 
+## Installation
+
+> ```bash
+> npm i @useui/react tinycolor2 @emotion/core@^11 @emotion/react@^11 @emotion/styled@^11
+> ```
+
 ## Let's use the Playgroud Style
 
 Is you typing directly in Component that enable the Playground Style.
@@ -174,7 +180,7 @@ const UI = {
 };
 
 // spread it in the Box as react props
-const Badge = props => {
+const Badge = (props) => {
   return <Box as="span" {...UI} {...props} />;
 };
 
@@ -187,7 +193,7 @@ compared to playground style :
 import React from "react";
 import { Box } from "@tresorama/use-ui";
 
-const Badge = props => {
+const Badge = (props) => {
   return (
     <Box
       as="span"
@@ -227,22 +233,24 @@ import { Box, useUI } from "#tresorma/use-ui";
 
 const sheet = {
   // define/parse the Stack API.
-  API: props => ({
+  API: (props) => ({
     direction: props.direction || "row", // 'row' | 'column'
     gutter: props.gutter || 0, // <Number>
   }),
 
   // consume the Stack API and return UI object.
-  UI: _ => ({
+  UI: (_) => ({
     display: "flex",
     flexDirection: _.direction,
     "& > * + *": {
-      [`margin${_.direction === "row" ? "Left" : "Top"}`]: _.gutter ? _.gutter : undefined,
+      [`margin${_.direction === "row" ? "Left" : "Top"}`]: _.gutter
+        ? _.gutter
+        : undefined,
     },
   }),
 };
 
-const Stack = props => {
+const Stack = (props) => {
   //on every re-render of React re-build the "UI" object based on "props" that are changed.
   // we receive also "propsCleaned" so we can spread down ...
   const [UI, propsCleaned] = useUI(sheet, props, []);
@@ -273,8 +281,8 @@ return <Box as="span" {...UI} {...propsCleaned} >;
 
 ```javascript
 const sheet = {
-  API: props => ({}), // => must return an {}
-  UI: _ => ({}), // => must return an {}
+  API: (props) => ({}), // => must return an {}
+  UI: (_) => ({}), // => must return an {}
 };
 ```
 
@@ -414,11 +422,11 @@ import React from "react";
 import { Box, useUI } from "@tresorama/use-ui";
 
 const sheet = {
-  API: props => ({
+  API: (props) => ({
     shape: props.shape || "text",
     color: props.color || "black",
   }),
-  UI: _ => ({
+  UI: (_) => ({
     buttonWrapper: {
       //special
       TYPO: "button",
@@ -506,18 +514,18 @@ What if the we have something that let us:
 >
 > ```javascript
 > const stylesheet = {
->   API: props => ({
+>   API: (props) => ({
 >     color: props.color || "black",
 >     autocenter: props.autocenter || false,
 >   }),
->   UI: _ => ({
+>   UI: (_) => ({
 >     margin: _.autocenter ? "auto" : undefined,
 >     backgroundColor: _.color,
 >     fontSize: "lg",
 >   }),
 > };
 >
-> const NonSenseUIComponent = props => {
+> const NonSenseUIComponent = (props) => {
 >   const [UI, propsCleaned] = useUI(stylesheet, props, []);
 >   return <Box {...UI} {...propsCleaned} />;
 > };
@@ -674,7 +682,7 @@ const UI = {
 };
 
 // React Component that use Box as a "span"
-const Badge = props => {
+const Badge = (props) => {
   return <Box as="span" {...UI} {...props} />;
 };
 
@@ -688,7 +696,7 @@ import React from "react";
 import { Box } from "@tresorama/use-ui";
 
 // React Component that use Box as a "span"
-const Badge = props => {
+const Badge = (props) => {
   return (
     <Box
       as="span"
@@ -745,22 +753,24 @@ import { Box, useUI } from "#tresorma/use-ui";
 // build the UI object
 const sheet = {
   // define/parse the Stack API.
-  customAPI: props => ({
+  customAPI: (props) => ({
     direction: props.direction || "row", // 'row' | 'column'
     gutter: props.gutter || 0, // <Number>
   }),
 
   // consume the Stack API and return UI object.
-  runner: _ => ({
+  runner: (_) => ({
     display: "flex",
     flexDirection: _.direction,
     "& > * + *": {
-      [`margin${_.direction === "row" ? "Left" : "Top"}`]: _.gutter ? _.gutter : undefined,
+      [`margin${_.direction === "row" ? "Left" : "Top"}`]: _.gutter
+        ? _.gutter
+        : undefined,
     },
   }),
 };
 
-const Stack = props => {
+const Stack = (props) => {
   //on every re-render of React re-build the "UI" object based on "props" that are changed.
   const [UI, propsCleaned] = useUI(sheet, props, []);
 
@@ -787,8 +797,8 @@ Shape :
 
 ```javascript
 const sheet = {
-  customAPI: props => ({}), // => must return an {}
-  runner: _ => ({}), // => must return an {}
+  customAPI: (props) => ({}), // => must return an {}
+  runner: (_) => ({}), // => must return an {}
 };
 ```
 
@@ -919,11 +929,11 @@ import React from "react";
 import { Box, useUI } from "@tresorama/use-ui";
 
 const sheet = {
-  customAPI: props => ({
+  customAPI: (props) => ({
     shape: props.shape || "text",
     color: props.color || "black",
   }),
-  runner: _ => ({
+  runner: (_) => ({
     buttonWrapper: {
       //special
       TYPO: "button", // skipp this for now ...
@@ -1034,7 +1044,6 @@ Syntax :
 
 ```javascript
 "colorCode=>method1()+method2()";
-
 ```
 
 Examples:
@@ -1042,7 +1051,6 @@ Examples:
 ```javascript
 "#457856=>darken(10)+setAlpha(0.8)";
 "primary=>darken(10)+setAlpha(0.8)";
-
 ```
 
 Methods List:
@@ -1532,21 +1540,23 @@ import React from "react";
 import { Box, useUI } from "#tresorma/use-ui";
 
 const sheet = {
-  customAPI: props => ({
+  customAPI: (props) => ({
     direction: props.direction || "row", // 'row' | 'column'
     gutter: props.gutter || 0, // <Number>
   }),
-  runner: _ => ({
+  runner: (_) => ({
     wrapper: {
       display: "flex",
       flexDirection: _.direction,
       "& > * + *": {
-        [`margin${_.direction === "row" ? "Left" : "Top"}`]: _.gutter ? _.gutter : undefined,
+        [`margin${_.direction === "row" ? "Left" : "Top"}`]: _.gutter
+          ? _.gutter
+          : undefined,
       },
     },
   }),
 };
-const Stack = props => {
+const Stack = (props) => {
   const [UI, propsCleaned] = useUI(sheet, props, []);
   return <Box {...UI.wrapper} {...propsCleaned} />;
 };
@@ -1623,7 +1633,7 @@ const sheet = {
 Finally when Stack is mounted we call customApi and runner to build "UI" object.
 
 ```javascript
-const Stack = props => {
+const Stack = (props) => {
   // buildin the UI object...
   const [UI, propsCleaned] = (sheet, props, []);
   // propsCleaned is props without sheet.customAPI props, so you don't spread down props of the UI.
@@ -1697,7 +1707,11 @@ const COLOR = {
 
 // FONT FAMILIES ...
 const FONT = {
-  fonts: ["Arial, serif", "Avenir, serif", '"Roboto", "Helvetica", "Arial", sans-serif'],
+  fonts: [
+    "Arial, serif",
+    "Avenir, serif",
+    '"Roboto", "Helvetica", "Arial", sans-serif',
+  ],
 };
 
 // TEXT SIZES ...
@@ -1868,7 +1882,7 @@ const CONVERTERS = {
     getTransitionTime: ["transitionDuration", "transitionDelay"],
     getTransitionTimingFunction: ["transitionTimingFunction"],
   },
-  passDirectly: a => String(a),
+  passDirectly: (a) => String(a),
   getSize: (size, { SIZE: S }) => S.getSizeValue(size),
   getTextSize: (size, { TEXT: T }) => T.getFontSizeValue(size),
   getColor: (key, { COLOR: C }) => C.getColorValue(key),
