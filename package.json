@@ -1,0 +1,25 @@
+{
+  "name": "@use-ui/react",
+  "version": "0.9.0",
+  "description": "CSS-in-JS library that let you define custom theme and a custom logic to convert properties value.",
+  "main": "./dist/index.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tresorama/use-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tresorama/use-ui/issues"
+  },
+  "homepage": "https://github.com/tresorama/use-ui#readme",
+  "author": "Jacopo Marrone",
+  "license": "MIT",
+  "scripts": {
+    "build:npm": "rm -rf dist && mkdir dist && babel src -d dist --copy-files"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/preset-react": "^7.13.13"
+  }
+}
