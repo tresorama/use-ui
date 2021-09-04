@@ -6,12 +6,12 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tresorama/use-ui.git"
+    "url": "git+https://github.com/tresorama/useui.git"
   },
   "bugs": {
-    "url": "https://github.com/tresorama/use-ui/issues"
+    "url": "https://github.com/tresorama/useui/issues"
   },
-  "homepage": "https://github.com/tresorama/use-ui#readme",
+  "homepage": "https://github.com/tresorama/useui#readme",
   "author": "Jacopo Marrone",
   "license": "MIT",
   "scripts": {
