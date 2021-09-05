@@ -4,6 +4,11 @@
   "description": "CSS-in-JS library that let you define custom theme and a custom logic to convert properties value.",
   "main": "./dist/index.js",
   "private": false,
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tresorama/useui.git"

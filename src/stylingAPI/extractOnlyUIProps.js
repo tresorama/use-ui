@@ -1,8 +1,8 @@
 import { removeFalsyPropsFromObject } from "../jshelpers/index.js";
 
 // EXTRACT ALL CSS PROPS FROM A PROPS OBJECT
-const EXTRACTOR = p =>
-  removeFalsyPropsFromObject({
+const EXTRACTOR = (p) => {
+  return removeFalsyPropsFromObject({
     // general
     zIndex: p.zIndex,
     pointerEvents: p.pointerEvents,
@@ -222,5 +222,6 @@ const EXTRACTOR = p =>
     transitionProperty: p.transitionProperty,
     transitionTimingFunction: p.transitionTimingFunction,
   });
+};
 
 export { EXTRACTOR };
